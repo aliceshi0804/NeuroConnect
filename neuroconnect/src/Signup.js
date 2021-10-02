@@ -9,11 +9,19 @@ export default function Signup() {
     const emailRef = useRef();
     const passwordRef =useRef();
     const passwordConfirmRef = useRef();
+    const nameRef = useRef();
+    const mentorRef = useRef();
+    const neurodivergentRef=useRef();
     const {signup} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] =useState(false)
     const history = useHistory()
     async function handleSubmit(e){
+        let data = {
+            Name: nameRef.current.value,
+            Mentor: mentorRef.current.value,
+            Neuro: neurodivergentRef.current.value
+        }
         e.preventDefault()
         if(passwordRef.current.value !== passwordConfirmRef.current.value){
             return setError('Passwords do not match')
@@ -21,7 +29,7 @@ export default function Signup() {
 
         try {
             setError("")
-            await signup(emailRef.current.value, passwordRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value,data)
             setLoading(true)
             
         }
@@ -40,6 +48,12 @@ export default function Signup() {
                 <h2>Signup</h2>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
+                    <Form.Group id="name">
+                        <Form.Label>
+                            First and Last Name
+                        </Form.Label>
+                        <Form.Control ref={nameRef} required/>
+                    </Form.Group>
                     <Form.Group id="email">
                         <Form.Label>
                             Email
@@ -58,6 +72,18 @@ export default function Signup() {
                             password confirmation
                         </Form.Label>
                         <Form.Control type="password" ref={passwordConfirmRef} required/>
+                    </Form.Group>
+                    <Form.Group id="mentor">
+                        <Form.Label>
+                            Mentor or Mentee?
+                        </Form.Label>
+                        <Form.Control ref={mentorRef} required/>
+                    </Form.Group>
+                    <Form.Group id="mentor">
+                        <Form.Label>
+                            Neurodivergent?
+                        </Form.Label>
+                        <Form.Control ref={neurodivergentRef} required/>
                     </Form.Group>
                     <Button disabled={loading} type="submit">
                         Sign up
