@@ -21,7 +21,11 @@ export function AuthProvider({children}) {
             try {
                 const docRef = addDoc(collection(db, "users"), {
                     uid: cred.user.uid,
+                    name: data.Name,
                   email: cred.user.email,
+                  mentor: data.Mentor,
+                  neuro: data.Neuro
+                  
                 });
                 console.log("Document written with ID: ", docRef.id);
               } catch (e) {
