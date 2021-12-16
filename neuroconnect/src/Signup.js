@@ -3,7 +3,7 @@ import React, {useRef,useState} from 'react'
 import {Form, Button,Card,Alert } from 'react-bootstrap'
 import {useAuth} from './contexts/AuthContext'
 import { Link,useHistory } from 'react-router-dom';
-
+import LogoHeader from './components/LogoHeader'
 
 export default function Signup() {
     const emailRef = useRef();
@@ -43,6 +43,7 @@ export default function Signup() {
     }
     return (
         <>
+        <LogoHeader/>
         <Card>
             <Card.Body>
                 <h2>Signup</h2>
@@ -62,14 +63,14 @@ export default function Signup() {
                     </Form.Group>
                     <Form.Group id="password">
                         <Form.Label>
-                            password
+                            Password
                         </Form.Label>
                         <Form.Control type="password" ref={passwordRef} required/>
                         
                     </Form.Group>
                     <Form.Group id="password-confirm">
                         <Form.Label>
-                            password confirmation
+                            Password confirmation
                         </Form.Label>
                         <Form.Control type="password" ref={passwordConfirmRef} required/>
                     </Form.Group>
@@ -85,6 +86,13 @@ export default function Signup() {
                         </Form.Label>
                         <Form.Control ref={neurodivergentRef} required/>
                     </Form.Group>
+                    <Form.Group id="mentor">
+                        <Form.Label>
+                            Career Field or Career Interest? 
+                        </Form.Label>
+                        <Form.Control ref={neurodivergentRef} required/>
+                    </Form.Group>
+                    <br/>
                     <Button disabled={loading} type="submit">
                         Sign up
                     </Button>

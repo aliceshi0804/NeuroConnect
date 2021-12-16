@@ -1,0 +1,116 @@
+.appBarSize{
+    width: 100%;
+  }
+  
+  .buttonCircleTeal{
+    position: relative;
+    left: 0rem;
+    right: 0rem;
+    top: 0rem;
+    bottom: 0rem;
+    height:2.9rem;
+    width:12rem;
+  
+    border: 2px solid #242828;
+    box-sizing: border-box;
+    border-radius: 2.3rem;
+    margin-top: 2rem;
+    margin-left:2rem;
+    background-color: #2CC9B6;
+  }
+
+  .buttonCircle{
+    position: relative;
+    left: 0rem;
+    right: 0rem;
+    top: 0rem;
+    bottom: 0rem;
+    height:2.9rem;
+    width:12rem;
+  
+    border: 2px solid #242828;
+    box-sizing: border-box;
+    border-radius: 2.3rem;
+    margin-top: 2rem;
+    margin-left:2rem;
+  }
+  
+  .buttonText{
+    position: relative;
+    left: 0.3rem;
+    right: 0.3rem;
+    top: 0.30rem;
+    bottom: 0.3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    color:black;
+  }
+
+  .homeHeader{
+    display:flex;
+    flex-direction: row;
+  }
+
+  .buttonHeader{
+    display:flex;
+    margin-left: 25rem;
+  }
+  
+  .sideImage{
+    width: 50rem;
+    height: 25rem;
+    /* left: 45.625rem;
+    top: 15.625rem; */
+    margin-top:3rem;
+    margin-right:2rem;
+  }
+
+  .serviceStatement{
+    margin-top:3rem;
+    margin-right:2rem;
+  }
+
+  .homeRect{
+    width: 30rem;
+    height:18.75rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 100%;
+    height: 100%; */
+  }
+
+  .homeCircle{
+    width:13.18rem;
+    height:13.18rem;
+    left:18.81rem;
+    right:30.18rem;
+    border-radius: 10rem;
+  }
+
+  .textBox{
+    width: 434px;
+    height: 44px;
+    left: 125px;
+    top: 384px;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 100px;
+  }
+
+  .moduleCardFormat{
+    width: 72rem;
+    height: 11.3rem;
+    left: 8.9rem;
+    top: 23.3rem;
+    border-radius: 1.3rem;
+    margin-bottom: 2rem;
+  }
+
+  .moduleCardP{
+    padding-right: 1rem;
+    font-weight: 500;
+  }
