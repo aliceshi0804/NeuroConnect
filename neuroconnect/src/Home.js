@@ -7,6 +7,7 @@ import globePeople from './images/globePeople.png'
 import mentor from './images/Mentors.png'
 import mentee from './images/Mentees.png'
 import volunteer from './images/Volunteers.png'
+import maleTablet from './images/maleTablet.png'
 import { Link} from 'react-router-dom';
 import Button from "./components/Button"
 import HomeRectangleFeature from './components/HomeRectangleFeature';
@@ -35,14 +36,22 @@ export default function Home() {
             
             <Grid item xs = {6}>
                 <img src = {webPeople} class = "sideImage"/>
-                <p> IMAGE CAPTION: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                <p> IMAGE CAPTION: A network of many professional individuals</p>
             </Grid>
         </Grid>
 
         <Grid container style={{marginLeft:'2rem', marginBottom:'2rem'}}>
-                <h2>Our Services</h2>
-                <HomeRectangleFeature image = {globePeople} imageCap = "IMAGE CAPTION: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim." 
-                text = "Mentees in the NeuroConnect program will get to chat with potential mentors and meet with a neurodivergent mentor 1:1 of similar professional interests for a total of 5 sessions. NeuroConnect also provides free mock interview sessions for students and interview feedback."/>
+                <Grid item xs ={12} style ={{ marginBottom:'2rem'}}>
+                    <h2>Our Services</h2>
+                </Grid>
+                <Grid item xs={6}>
+                    <HomeRectangleFeature image = {maleTablet} imageCap = "IMAGE CAPTION: Male mentee on tablet looking for a mentor" />
+                </Grid>
+
+                <Grid item xs = {6}>
+                    <HomeRectangleFeature image = {globePeople} imageCap = "IMAGE CAPTION: Male mentee with laptop learning from a female mentor" />
+                </Grid>
+                <p>Mentees in the NeuroConnect program will get to chat with potential mentors and meet with a neurodivergent mentor 1:1 of similar professional interests for a total of 5 sessions. NeuroConnect also provides free mock interview sessions for students and interview feedback.</p>
         </Grid>
 
         <h2 style ={{marginLeft:'2rem', marginBottom:'2rem'}}>What To Expect</h2>

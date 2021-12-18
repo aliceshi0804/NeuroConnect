@@ -44,8 +44,6 @@ export default function Signup() {
     return (
         <>
         <LogoHeader/>
-        <Card>
-            <Card.Body>
                 <h2>Signup</h2>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
@@ -97,9 +95,6 @@ export default function Signup() {
                         Sign up
                     </Button>
                 </Form>
-            </Card.Body>
-            
-    </Card>
         <div>
             Have an account? <Link to="/login">Login</Link>
         </div>
