@@ -1,8 +1,7 @@
 import { stringify } from '@firebase/util';
 import React, {useRef,useState} from 'react'
 import {Form, Alert , Button} from 'react-bootstrap'
-// import Button from "../src/components/Button"
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import {useAuth} from './contexts/AuthContext'
 import LogoHeader from './components/LogoHeader'
 import HomeRectangleFeature from './components/HomeRectangleFeature'
@@ -12,28 +11,38 @@ import maleTablet from './images/maleTablet.png'
 export default function Login() {
     const emailRef = useRef();
     const passwordRef =useRef();
-
-    const {login} = useAuth()
+    const {login} = useAuth();
     const [error, setError] = useState('')
     const [loading, setLoading] =useState(false)
+    const [loggedIn, setLogIn] = useState(false)
     const history = useHistory()
 
     async function handleSubmit(e){
-        e.preventDefault()
-
+        e.preventDefault();
 
         try {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/")
-            
+            console.log('loading state after setLoading(true)', loading)
+            history.push("/");
+            console.log("logged in after auth",loggedIn)
         }
         catch (error){
             console.log(error)
             setError(stringify(error.message))
         }
         setLoading(false)
+        setLogIn(true)
+        console.log('loading state', loading)
+        if (loggedIn) {
+            return <Redirect to={{
+                pathname: '/learn',
+            }}/>
+        }
+        else{
+            console.log("logged in",loggedIn)
+        }
     }
     return (
         <>

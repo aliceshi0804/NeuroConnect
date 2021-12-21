@@ -4,7 +4,7 @@ export default function(){
     return (
     <div>
         <Dashboard/>
-        <h1>Chat</h1>
+        <h1 style={{marginLeft:'2rem', marginBottom:'2rem'}}>Chat</h1>
     </div>
     )
 }

@@ -4,7 +4,7 @@ export default function(){
     return (
         <div>
             <Dashboard/>
-            <h1>Network</h1>
+            <h1 style={{marginLeft:'2rem', marginBottom:'2rem'}}>Resources</h1>
         </div>
     )
 }

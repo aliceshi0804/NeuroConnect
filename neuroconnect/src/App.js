@@ -6,9 +6,10 @@ import Login from './Login';
 import Home from './Home';
 import Learn from './Learn';
 import Connect from './Connect';
-import Network from './Network';
+import Resources from './Resources';
 import Chat from './Chat';
 import ModulePage from './ModulePage'
+import Profile from './Profile'
 import ForgotPassword from './ForgotPassword';
 import { AuthProvider } from './contexts/AuthContext';
 
@@ -26,8 +27,9 @@ function App() {
                   <Route path="/login" component ={Login}/>
                   <Route path="/learn" component ={Learn}/>
                   <Route path="/connect" component ={Connect}/>
-                  <Route path="/network" component ={Network}/>
+                  <Route path="/resources" component ={Resources}/>
                   <Route path="/chat" component ={Chat}/>
+                  <Route path="/profile" component ={Profile}/>
                   <Route path="/forgotPassword" component ={ForgotPassword}/>
                   <Route path="/module" component={ModulePage}/>
                 </Switch>

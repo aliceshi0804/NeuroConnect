@@ -13,7 +13,7 @@ export default function(props){
     return (
     <div>
         <Dashboard/>
-        <h1>Learn</h1>
+        <h1 style={{marginLeft:'2rem', marginBottom:'2rem'}}>Learn</h1>
         <ul>{modDataList}</ul>
     </div>
     )
