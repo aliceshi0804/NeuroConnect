@@ -34,15 +34,7 @@ export default function Login() {
         }
         setLoading(false)
         setLogIn(true)
-        console.log('loading state', loading)
-        if (loggedIn) {
-            return <Redirect to={{
-                pathname: '/learn',
-            }}/>
-        }
-        else{
-            console.log("logged in",loggedIn)
-        }
+        history.push("/learn")
     }
     return (
         <>
