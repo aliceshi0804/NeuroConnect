@@ -114,3 +114,24 @@
     padding-right: 1rem;
     font-weight: 500;
   }
+
+  .purpleCircle{
+    width: 3.125rem;
+    height: 3.125rem;
+    background: #7E28C1;
+    border-radius: 10rem;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    padding-top:0.5rem;
+  }
+
+  .numberText{
+    width: 1.4rem;
+    height: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.68rem;
+    color: #FFFFFF;
+  }

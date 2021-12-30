@@ -4,6 +4,8 @@ import {Form, Button,Alert } from 'react-bootstrap'
 import {useAuth} from './contexts/AuthContext'
 import { Link,useHistory } from 'react-router-dom';
 import LogoHeader from './components/LogoHeader'
+import {Grid} from '@mui/material';
+import NumberSignUp from './components/NumberSignUp'
 
 export default function Signup() {
     const emailRef = useRef();
@@ -44,57 +46,65 @@ export default function Signup() {
     return (
         <>
         <LogoHeader/>
-                <h2>Signup</h2>
-                {error && <Alert variant="danger">{error}</Alert>}
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group id="name">
-                        <Form.Label>
-                            First and Last Name
-                        </Form.Label>
-                        <Form.Control ref={nameRef} required/>
-                    </Form.Group>
+        <NumberSignUp number = '1'/>
+        <h2>Let's get you started!</h2>
+                <Grid container style={{marginBottom:'2rem', marginLeft:'2rem'}}>
+                    <Form onSubmit={handleSubmit}>
+                    {error && <Alert variant="danger">{error}</Alert>}
+                    <Grid item xs = {6}>
+                        <Form.Group id="name">
+                                <Form.Label>
+                                    First and Last Name
+                                </Form.Label>
+                                <Form.Control ref={nameRef} required/>
+                        </Form.Group>
+                    </Grid>
+
+                    <Grid item xs ={6}>
                     <Form.Group id="email">
-                        <Form.Label>
-                            Email
-                        </Form.Label>
-                        <Form.Control type="email" ref={emailRef} required/>
-                    </Form.Group>
-                    <Form.Group id="password">
-                        <Form.Label>
-                            Password
-                        </Form.Label>
-                        <Form.Control type="password" ref={passwordRef} required/>
-                        
-                    </Form.Group>
-                    <Form.Group id="password-confirm">
-                        <Form.Label>
-                            Password confirmation
-                        </Form.Label>
-                        <Form.Control type="password" ref={passwordConfirmRef} required/>
-                    </Form.Group>
-                    <Form.Group id="mentor">
-                        <Form.Label>
-                            Mentor or Mentee?
-                        </Form.Label>
-                        <Form.Control ref={mentorRef} required/>
-                    </Form.Group>
-                    <Form.Group id="mentor">
-                        <Form.Label>
-                            Neurodivergent?
-                        </Form.Label>
-                        <Form.Control ref={neurodivergentRef} required/>
-                    </Form.Group>
-                    <Form.Group id="mentor">
-                        <Form.Label>
-                            Career Field or Career Interest? 
-                        </Form.Label>
-                        <Form.Control ref={neurodivergentRef} required/>
-                    </Form.Group>
-                    <br/>
-                    <Button disabled={loading} type="submit">
-                        Sign up
-                    </Button>
-                </Form>
+                            <Form.Label>
+                                Email
+                            </Form.Label>
+                            <Form.Control type="email" ref={emailRef} required/>
+                        </Form.Group>
+                        <Form.Group id="password">
+                            <Form.Label>
+                                Password
+                            </Form.Label>
+                            <Form.Control type="password" ref={passwordRef} required/>
+                            
+                        </Form.Group>
+                        <Form.Group id="password-confirm">
+                            <Form.Label>
+                                Password confirmation
+                            </Form.Label>
+                            <Form.Control type="password" ref={passwordConfirmRef} required/>
+                        </Form.Group>
+                        <Form.Group id="mentor">
+                            <Form.Label>
+                                Mentor or Mentee?
+                            </Form.Label>
+                            <Form.Control ref={mentorRef} required/>
+                        </Form.Group>
+                        <Form.Group id="mentor">
+                            <Form.Label>
+                                Neurodivergent?
+                            </Form.Label>
+                            <Form.Control ref={neurodivergentRef} required/>
+                        </Form.Group>
+                        <Form.Group id="mentor">
+                            <Form.Label>
+                                Career Field or Career Interest? 
+                            </Form.Label>
+                            <Form.Control ref={neurodivergentRef} required/>
+                        </Form.Group>
+                        <br/>
+                        <Button disabled={loading} type="submit">
+                            Sign up
+                        </Button>
+                    </Grid>
+                    </Form>
+                </Grid>
         <div>
             Have an account? <Link to="/login">Login</Link>
         </div>
