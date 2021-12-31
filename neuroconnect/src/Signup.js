@@ -23,7 +23,6 @@ export default function Signup() {
     const [error, setError] = useState('')
     const [loading, setLoading] =useState(false)
     const history = useHistory()
-    const Interest = CareerInterestData
     async function handleSubmit(e){
         let data = {
             Name: nameRef.current.value,
@@ -61,16 +60,27 @@ export default function Signup() {
                     <NumberSignUp number = '1'/>
                     <h3 style={{marginLeft:'2rem'}}>I'll be using Neuroconnect as a </h3>
                 </div>
+{/* 
+                <div style={{display:'flex', marginLeft:'6rem', marginBottom:'2rem'}}>
+                    <Button disabled={loading} type="submit">
+                            Mentor
+                    </Button>
 
-                <Grid container style={{marginBottom:'1rem', marginLeft:'12rem'}}>
-                    <Grid item xs = {3}>
-                        <Button  disabled={loading} type="submit">
+                    <Button disabled={loading} type="submit">
+                            Mentee
+                    </Button>
+                </div> */}
+
+                <Grid container style={{marginBottom:'2rem', marginLeft:'6rem'}} alignItems='center'>
+                    <Grid item xs = {3} pr={'5rem'}>
+                        {/* //onClick={()=>changeColor()} */}
+                        <Button className = 'buttonCircle'  disabled={loading} type="submit">
                             Mentor
                         </Button>
                     </Grid>
 
-                    <Grid item xs = {3}>
-                        <Button  disabled={loading} type="submit">
+                    <Grid item xs = {3} pl={'5rem'}>
+                        <Button className = 'buttonCircle'  disabled={loading} type="submit">
                             Mentee
                         </Button>
                     </Grid>
@@ -83,15 +93,24 @@ export default function Signup() {
                     <h3 style={{marginLeft:'2rem'}}>Do you identify as neurodivergent?</h3>
                 </div>
 
-                <Grid container style={{marginBottom:'2rem', marginLeft:'12rem'}}>
-                    <Grid item xs = {3}>
-                        <Button  disabled={loading} type="submit">
+                {/* <div style={{display:'flex', marginLeft:'6rem', marginBottom:'2rem'}}>
+                <Button className = 'buttonCircle' disabled={loading} type="submit">
+                        Yes
+                </Button>
+                <Button className = 'buttonCircle' disabled={loading} type="submit">
+                        No
+                </Button>
+                </div> */}
+
+                <Grid container style={{marginBottom:'2rem', marginLeft:'6rem'}} alignItems='center'>
+                    <Grid item xs = {3} pr={'5rem'}>
+                        <Button className = 'buttonCircle' disabled={loading} type="submit">
                             Yes
                         </Button>
                     </Grid>
 
-                    <Grid item xs = {3}>
-                        <Button  disabled={loading} type="submit">
+                    <Grid item xs = {3} pl={'5rem'}>
+                        <Button className = 'buttonCircle'  disabled={loading} type="submit">
                             No
                         </Button>
                     </Grid>
@@ -105,26 +124,14 @@ export default function Signup() {
                 </div>
             </Grid>
 
-            {/* <Grid item xs = {12} style={{marginBottom:'1rem', marginLeft:'2rem'}}>
-                <Form.Group id="name">
+            <Form.Group id="name" style={{marginBottom:'1rem', marginLeft:'9rem'}}>
                     <Form.Label>
                         Search Fields By Keyword
                     </Form.Label>
-                    <div>
-                        <Form.Control class = 'textBox' required id="inputCareer" aria-describedby="inputCareer"/>
-                    </div>
-                </Form.Group>
-            </Grid> */}
+                    <Form.Control className = 'textBox' required id="inputCareer" aria-describedby="inputCareer"/>
+            </Form.Group>
 
             <Grid item xs = {12} style={{textAlign:'center', marginBottom:'2rem'}}>
-                <Form.Group id="name" style={{marginBottom:'1rem'}}>
-                    <Form.Label>
-                        Search Fields By Keyword
-                    </Form.Label>
-                    <div>
-                        <Form.Control class = 'textBox' required id="inputCareer" aria-describedby="inputCareer"/>
-                    </div>
-                </Form.Group>
                 <select multiple class = "careerScroll">
                     {CareerInterestData && CareerInterestData.map((item) => (<option value={item.number}>{item.name}</option>))}
                 </select>
@@ -137,7 +144,7 @@ export default function Signup() {
                 </div>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={6} style={{marginTop:'1rem'}}>
                     <HomeRectangleFeature image = {maleTablet} imageCap = "IMAGE CAPTION: Male mentee on tablet looking for a mentor"/>
                 </Grid>
 
@@ -147,7 +154,7 @@ export default function Signup() {
                         First and Last Name
                     </Form.Label>
                     <div>
-                        <Form.Control class = 'textBox' ref={nameRef} required id="inputName" aria-describedby="inputName"/>
+                        <Form.Control className = 'textBox' ref={nameRef} required id="inputName" aria-describedby="inputName"/>
                     </div>
                 </Form.Group>
 
@@ -156,7 +163,7 @@ export default function Signup() {
                         Pronouns
                     </Form.Label>
                     <div>
-                        <Form.Control class = 'textBox' ref={pronounRef} required id="inputPronouns" aria-describedby="inputPronouns"/>
+                        <Form.Control className = 'textBox' ref={pronounRef} required id="inputPronouns" aria-describedby="inputPronouns"/>
                     </div>
                 </Form.Group>
 
@@ -165,7 +172,7 @@ export default function Signup() {
                         Email
                     </Form.Label>
                     <div >
-                        <Form.Control class = 'textBox' ref={emailRef} required id="inputEmail" aria-describedby="inputEmail"/>
+                        <Form.Control className = 'textBox' ref={emailRef} required id="inputEmail" aria-describedby="inputEmail"/>
                     </div>
                 </Form.Group>
 
@@ -174,7 +181,7 @@ export default function Signup() {
                         Input Password
                     </Form.Label>
                     <div >
-                        <Form.Control class = 'textBox' ref={passwordRef} required id="inputPassword" aria-describedby="inputPassword"/>
+                        <Form.Control className = 'textBox' ref={passwordRef} required id="inputPassword" aria-describedby="inputPassword"/>
                     </div>
                 </Form.Group>
 
@@ -183,21 +190,21 @@ export default function Signup() {
                         Confirm Password
                     </Form.Label>
                     <div >
-                        <Form.Control class = 'textBox' ref={passwordConfirmRef} required id="confirmPassword" aria-describedby="confirmPassword"/>
+                        <Form.Control className = 'textBox' ref={passwordConfirmRef} required id="confirmPassword" aria-describedby="confirmPassword"/>
                     </div>
                 </Form.Group>
             </Grid>
         </Grid>
     </Form>
 
-        <div style={{margin:'2rem'}}>
-            <Button class="buttonCircle" disabled={loading} type="submit">
+        <div style={{margin:'1rem', textAlign:'center'}}>
+            <Button className="buttonCircle" disabled={loading} type="submit">
                 Sign Up
             </Button>
         </div>
         
-        <div style={{margin:'2rem'}}>
-            <h3>Have an account? <Link to="/login" style={{textDecoration:'none'}}>Login!</Link></h3>
+        <div style={{textAlign:'center'}}>
+            <p>Already have an account? <Link to="/login" style={{textDecoration:'none'}}>Login Here!</Link></p>
         </div>
         </>  
         
