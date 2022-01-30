@@ -1,7 +1,7 @@
 import React, {useContext,useEffect,useState} from "react";
 import { collection, addDoc } from "firebase/firestore"; 
 import {auth, db} from '../firebase'
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, signOut} from "firebase/auth";
 import { useHistory } from 'react-router-dom';
 
 const isAuth = getAuth();
@@ -17,14 +17,15 @@ export function AuthProvider({children}) {
     const [loading, setLoading] =useState(true)
     const history = useHistory()
     function signup(email,password,data){
-        auth.createUserWithEmailAndPassword(email,password).then(cred => {
+        auth.createUserWithEmailAndPassword(email,password).then((cred) => {
             try {
                 const docRef = addDoc(collection(db, "users"), {
-                    uid: cred.user.uid,
-                    name: data.Name,
+                uid: cred.user.uid,
+                name: data.Name,
                   email: cred.user.email,
                   mentor: data.Mentor,
-                  neuro: data.Neuro
+                  neuro: data.Neuro,
+                  pronouns: data.Pronouns
                   
                 });
                 console.log("Document written with ID: ", docRef.id);

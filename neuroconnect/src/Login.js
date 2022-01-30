@@ -18,23 +18,24 @@ export default function Login() {
     const history = useHistory()
 
     async function handleSubmit(e){
+        console.log("test")
         e.preventDefault();
 
         try {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            console.log('loading state after setLoading(true)', loading)
-            history.push("/");
-            console.log("logged in after auth",loggedIn)
+            // console.log('loading state after setLoading(true)', loading)
+            history.push("/learn");
+            // console.log("logged in after auth",loggedIn)
         }
         catch (error){
             console.log(error)
             setError(stringify(error.message))
         }
         setLoading(false)
-        setLogIn(true)
-        history.push("/learn")
+        // setLogIn(true)
+        // history.push("/learn")
     }
     return (
         <>
@@ -49,14 +50,18 @@ export default function Login() {
                         <Form.Label>
                             email
                         </Form.Label>
-                        <Form.Control type="email" ref={emailRef} required/>
+                        <div>
+                        <Form.Control className = 'textBox' type = "email" ref={emailRef} required id="inputEmail" aria-describedby="inputEmail"/>
+                    </div>
                     </Form.Group>
 
                     <Form.Group id="password">
                         <Form.Label>
                             password
                         </Form.Label>
-                        <Form.Control type="password" ref={passwordRef} required/>
+                    <div>
+                        <Form.Control className = 'textBox' type = "password" ref={passwordRef} required id="inputPass" aria-describedby="inputPass"/>
+                    </div>
                     </Form.Group>
             <div>
             <Button style={{background:'#2CC9B6', textDecoration:'none',border:'none'}} className = "buttonCircle" disabled={loading} type="submit" >

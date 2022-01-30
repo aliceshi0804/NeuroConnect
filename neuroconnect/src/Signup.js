@@ -10,8 +10,10 @@ import maleTablet from './images/maleTablet.png'
 import HomeRectangleFeature from './components/HomeRectangleFeature'
 import CareerInterestData from './components/CareerInterestData'
 import './index.css'
+import { PersonOutlineRounded } from '@mui/icons-material';
 
 export default function Signup() {
+    console.log("Before sign up")
     const emailRef = useRef();
     const passwordRef =useRef();
     const passwordConfirmRef = useRef();
@@ -24,21 +26,28 @@ export default function Signup() {
     const [loading, setLoading] =useState(false)
     const history = useHistory()
     async function handleSubmit(e){
+        console.log("handleSubmit")
+
+        console.log("data")
+        
+        e.preventDefault()
         let data = {
             Name: nameRef.current.value,
-            Mentor: mentorRef.current.value,
-            Neuro: neurodivergentRef.current.value
+            // Mentor: mentorRef.current.value,
+            // Neuro: neurodivergentRef.current.value,
+            Pronouns:pronounRef.current.value
         }
-        e.preventDefault()
+
         if(passwordRef.current.value !== passwordConfirmRef.current.value){
             return setError('Passwords do not match')
         }
 
         try {
             setError("")
-            await signup(emailRef.current.value, passwordRef.current.value,data)
             setLoading(true)
-            
+            console.log("Processing")
+            await signup(emailRef.current.value, passwordRef.current.value,data)
+            history.push("/learn");
         }
         catch (error){
             console.log(error)
@@ -46,14 +55,15 @@ export default function Signup() {
         }
 
         setLoading(false)
-        history.push("/")
+        console.log("end of handleSubmit")
+        // this.props.history.push("/learn")
     }
     return (
     <>
     <LogoHeader/>
     <h2 style={{margin:'2rem'}}>Let's get you started!</h2>
-    <Form onSubmit={handleSubmit}>
-    {error && <Alert variant="danger">{error}</Alert>}
+    {/* {error && <Alert variant="danger">{error}</Alert>}
+    <Form onSubmit={handleSubmit}> */}
         <Grid container style={{marginBottom:'1rem', marginLeft:'2rem'}}>
             <Grid item xs={6}>
                 <div style={{display:'flex'}}>
@@ -71,27 +81,35 @@ export default function Signup() {
                     </Button>
                 </div> */}
 
-                <Grid container style={{marginBottom:'2rem', marginLeft:'6rem'}} alignItems='center'>
-                    <Grid item xs = {3} pr={'5rem'}>
-                        {/* //onClick={()=>changeColor()} */}
-                        <Button className = 'buttonCircle'  disabled={loading} type="submit">
+                {/* <Grid container style={{marginBottom:'2rem'}} alignItems='center'>
+                    <Grid item xs = {2} pr={'6rem'}>
+                        <Button className = 'buttonCircle'  disabled={loading} type="submit" id ="mentor">
                             Mentor
                         </Button>
                     </Grid>
 
-                    <Grid item xs = {3} pl={'5rem'}>
-                        <Button className = 'buttonCircle'  disabled={loading} type="submit">
+                    <Grid item xs = {2} pl={'6rem'}>
+                        <Button className = 'buttonCircle'  disabled={loading} type="submit" id = "mentee">
                             Mentee
                         </Button>
                     </Grid>
-                </Grid>
+
+                    <Grid item xs = {2} pl={'12rem'}>
+                        <Button className = 'buttonCircle'  disabled={loading} type="submit" id = "mentee">
+                            Volunteer
+                        </Button>
+                    </Grid>
+
+                </Grid> */}
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={6} pl={'2rem'}>
                 <div style={{display:'flex'}}>
                     <NumberSignUp number = '2'/>
                     <h3 style={{marginLeft:'2rem'}}>Do you identify as neurodivergent?</h3>
                 </div>
+
+                {/* Textbox for neurodivergent fill in if clicked yes  */}
 
                 {/* <div style={{display:'flex', marginLeft:'6rem', marginBottom:'2rem'}}>
                 <Button className = 'buttonCircle' disabled={loading} type="submit">
@@ -102,7 +120,7 @@ export default function Signup() {
                 </Button>
                 </div> */}
 
-                <Grid container style={{marginBottom:'2rem', marginLeft:'6rem'}} alignItems='center'>
+                {/* <Grid container style={{marginBottom:'2rem', marginLeft:'6rem'}} alignItems='center'>
                     <Grid item xs = {3} pr={'5rem'}>
                         <Button className = 'buttonCircle' disabled={loading} type="submit">
                             Yes
@@ -114,7 +132,7 @@ export default function Signup() {
                             No
                         </Button>
                     </Grid>
-                </Grid>
+                </Grid> */}
             </Grid>
 
             <Grid item xs={12}>
@@ -124,7 +142,7 @@ export default function Signup() {
                 </div>
             </Grid>
 
-            <Form.Group id="name" style={{marginBottom:'1rem', marginLeft:'9rem'}}>
+            {/* <Form.Group id="keyword" style={{marginBottom:'1rem', marginLeft:'9rem'}}>
                     <Form.Label>
                         Search Fields By Keyword
                     </Form.Label>
@@ -132,10 +150,10 @@ export default function Signup() {
             </Form.Group>
 
             <Grid item xs = {12} style={{textAlign:'center', marginBottom:'2rem'}}>
-                <select multiple class = "careerScroll">
+                <select multiple className = "careerScroll">
                     {CareerInterestData && CareerInterestData.map((item) => (<option value={item.number}>{item.name}</option>))}
                 </select>
-            </Grid>
+            </Grid> */}
 
             <Grid item xs={12}>
                 <div style={{display:'flex'}}>
@@ -146,62 +164,68 @@ export default function Signup() {
 
             <Grid item xs={6} style={{marginTop:'1rem'}}>
                     <HomeRectangleFeature image = {maleTablet} imageCap = "IMAGE CAPTION: Male mentee on tablet looking for a mentor"/>
-                </Grid>
+            </Grid>
 
             <Grid item xs={6}>
-                <Form.Group id="name">
+            {error && <Alert variant="danger">{error}</Alert>}
+            <Form onSubmit={handleSubmit}>
+                <Form.Group id="name" role="form">
                     <Form.Label>
                         First and Last Name
                     </Form.Label>
                     <div>
-                        <Form.Control className = 'textBox' ref={nameRef} required id="inputName" aria-describedby="inputName"/>
+                    <Form.Control className = 'textBox' ref={nameRef} required id="inputName" aria-describedby="inputName"/>
                     </div>
                 </Form.Group>
 
-                <Form.Group id="pronouns">
+                <Form.Group id="pronouns" role="form">
                     <Form.Label>
                         Pronouns
                     </Form.Label>
                     <div>
-                        <Form.Control className = 'textBox' ref={pronounRef} required id="inputPronouns" aria-describedby="inputPronouns"/>
+                    <Form.Control className = 'textBox'  ref={pronounRef} required id="inputPronouns" aria-describedby="inputPronouns"/>
                     </div>
                 </Form.Group>
 
-                <Form.Group id="email">
+                <Form.Group id="email" role="form">
                     <Form.Label>
                         Email
                     </Form.Label>
-                    <div >
-                        <Form.Control className = 'textBox' ref={emailRef} required id="inputEmail" aria-describedby="inputEmail"/>
-                    </div>
-                </Form.Group>
+                  <div>
+                  <Form.Control className = 'textBox' type = "email"  ref={emailRef} required id="inputEmail" aria-describedby="inputEmail"/>
+                
+                  </div>
+                  </Form.Group>
 
-                <Form.Group id="password">
+                <Form.Group id="password" role="form">
                     <Form.Label>
                         Input Password
                     </Form.Label>
-                    <div >
-                        <Form.Control className = 'textBox' ref={passwordRef} required id="inputPassword" aria-describedby="inputPassword"/>
-                    </div>
+                <div>
+                <Form.Control className = 'textBox'  type = "password" ref={passwordRef} required id="inputPassword" aria-describedby="inputPassword"/>
+                
+                </div>
                 </Form.Group>
 
-                <Form.Group id="password-confirm">
+                <Form.Group id="password-confirm" role="form">
                     <Form.Label>
                         Confirm Password
                     </Form.Label>
-                    <div >
-                        <Form.Control className = 'textBox' ref={passwordConfirmRef} required id="confirmPassword" aria-describedby="confirmPassword"/>
+                    <div>
+                    <Form.Control className = 'textBox' type = "password" ref={passwordConfirmRef} required id="confirmPassword" aria-describedby="confirmPassword"/>
+                
                     </div>
                 </Form.Group>
-            </Grid>
-        </Grid>
-    </Form>
-
-        <div style={{margin:'1rem', textAlign:'center'}}>
-            <Button className="buttonCircle" disabled={loading} type="submit">
+                <div style={{marginLeft:'53rem'}}>
+            <Button className="buttonCircle" disabled={loading} type="submit" >
                 Sign Up
             </Button>
         </div>
+            </Form>
+            </Grid>
+        {/* </Form> */}
+        </Grid>
+    {/* </Form> */}
         
         <div style={{textAlign:'center'}}>
             <p>Already have an account? <Link to="/login" style={{textDecoration:'none'}}>Login Here!</Link></p>

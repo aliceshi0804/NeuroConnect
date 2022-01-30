@@ -10,6 +10,7 @@ import Resources from './Resources';
 import Chat from './Chat';
 import ModulePage from './ModulePage'
 import Profile from './Profile'
+import Onboarding from './Onboarding'
 import ForgotPassword from './ForgotPassword';
 import { AuthProvider } from './contexts/AuthContext';
 
@@ -32,6 +33,7 @@ function App() {
                   <Route path="/profile" component ={Profile}/>
                   <Route path="/forgotPassword" component ={ForgotPassword}/>
                   <Route path="/module" component={ModulePage}/>
+                  <Route path="/onboarding" component={Onboarding}/>
                 </Switch>
               </AuthProvider>
             </Router>

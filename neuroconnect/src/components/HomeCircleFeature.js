@@ -9,7 +9,7 @@ export default function(props){
             <img src = {props.image} className = "homeCircle"/>
             <div>
                 <h1>{props.title} </h1>
-                <p style = {{marginBottom:'2rem'}}>{props.imageCap}</p>
+                <p style = {{marginBottom:'2rem', alignText: 'center'}}>{props.imageCap}</p>
                 <p>{props.text} </p>
             </div>
         </div>

@@ -57,15 +57,15 @@ export default function Home() {
         <h2 style ={{marginLeft:'2rem', marginBottom:'2rem'}}>What To Expect</h2>
         <Grid container spacing = {3} style={{ marginLeft:'1rem',marginBottom:'2rem'}}>
             <Grid item xs = {4}>
-                <HomeCircleFeature image = {mentee} imageCap = "IMAGE CAPTION: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim." 
+                <HomeCircleFeature image = {mentee} imageCap = "IMAGE CAPTION: The word 'Mentees' written in a purple circle" 
                 text = "Search for and chat with potential neurodivergent mentors, and then schedule a time to meet."/>
             </Grid>
             <Grid item xs = {4}>
-                <HomeCircleFeature image = {mentor} imageCap = "IMAGE CAPTION: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim." 
+                <HomeCircleFeature image = {mentor} imageCap = "IMAGE CAPTION: The word 'Mentors' written in a purple circle" 
                 text = "Learn the materials in the modules and meet neurodivergent mentees.  "/>
             </Grid>
             <Grid item xs = {4}>
-                <HomeCircleFeature image = {volunteer} imageCap = "IMAGE CAPTION: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim." 
+                <HomeCircleFeature image = {volunteer} imageCap = "IMAGE CAPTION: The word 'Volunteers' written in a purple circle" 
                 text = "Volunteer to provide mock interviews for neurodivergent mentees."/>
             </Grid>
         </Grid>
