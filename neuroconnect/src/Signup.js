@@ -1,6 +1,6 @@
 import { stringify } from '@firebase/util';
 import React, {useRef,useState} from 'react'
-import {Form, Button,Alert } from 'react-bootstrap'
+import {Form, Button,Alert, ToggleButton, ButtonGroup, ToggleButtonGroup} from 'react-bootstrap'
 import {useAuth} from './contexts/AuthContext'
 import { Link,useHistory } from 'react-router-dom';
 import LogoHeader from './components/LogoHeader'
@@ -13,29 +13,60 @@ import './index.css'
 import { PersonOutlineRounded } from '@mui/icons-material';
 
 export default function Signup() {
-    console.log("Before sign up")
     const emailRef = useRef();
     const passwordRef =useRef();
     const passwordConfirmRef = useRef();
     const nameRef = useRef();
     const pronounRef = useRef();
-    const mentorRef = useRef();
-    const neurodivergentRef=useRef();
+    // const mentorRef = useRef();
+    const neurodivergentSpecific = useRef();
+    const [neurodivergentRef, setNeurodivergentRef]=React.useState();
     const {signup} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] =useState(false)
     const history = useHistory()
-    async function handleSubmit(e){
-        console.log("handleSubmit")
+    const [stylePos, setStylePos] = useState("buttonCircle");
+    const [checked, setChecked] = useState(false);
+    const [checkedNeuro, setCheckedNeuro] = React.useState();
+    const [radioPosValue, setRadioPosValue] = React.useState();
+    const [positionValue, setPosValue] = useState('');
+    const handlePosChange = (selectedPosition,selectedValue) => {
+      setPosValue(selectedPosition)
+      setRadioPosValue(selectedValue)
+      setStylePos("buttonCircleChange")
+    //   console.log("Position selected:", selectedPosition)
+    }
 
-        console.log("data")
-        
+    const handleNeuroChange = (selectedStatus) => {
+        console.log("selected ",selectedStatus)
+        setCheckedNeuro(selectedStatus)
+        setNeurodivergentRef(selectedStatus)
+      }
+
+    // const neuroFalse=()=>{
+    //     neurodivergentSpecific="N/A"
+    // }
+      console.log("check status", neurodivergentRef)
+    // console.log("Position stored:", positionValue)
+    const positions = [
+        { name: 'Mentor', value: '1' },
+        { name: 'Mentee', value: '2' },
+        { name: 'Volunteer', value: '3' },
+      ];
+
+      const neuro = [
+        { status: 'Yes', value: true },
+        { status: 'No', value: false }
+      ];
+
+    async function handleSubmit(e){
         e.preventDefault()
         let data = {
             Name: nameRef.current.value,
-            // Mentor: mentorRef.current.value,
-            // Neuro: neurodivergentRef.current.value,
-            Pronouns:pronounRef.current.value
+            Neuro: neurodivergentRef,
+            NeuroSpecific: neurodivergentSpecific.current.value,
+            Pronouns:pronounRef.current.value,
+            Position: positionValue
         }
 
         if(passwordRef.current.value !== passwordConfirmRef.current.value){
@@ -55,51 +86,81 @@ export default function Signup() {
         }
 
         setLoading(false)
-        console.log("end of handleSubmit")
-        // this.props.history.push("/learn")
     }
+
     return (
     <>
     <LogoHeader/>
     <h2 style={{margin:'2rem'}}>Let's get you started!</h2>
-    {/* {error && <Alert variant="danger">{error}</Alert>}
-    <Form onSubmit={handleSubmit}> */}
+    {error && <Alert variant="danger">{error}</Alert>}
+    <Form onSubmit={handleSubmit}>
         <Grid container style={{marginBottom:'1rem', marginLeft:'2rem'}}>
             <Grid item xs={6}>
                 <div style={{display:'flex'}}>
                     <NumberSignUp number = '1'/>
-                    <h3 style={{marginLeft:'2rem'}}>I'll be using Neuroconnect as a </h3>
+                    <h3 style={{marginLeft:'2rem', marginBottom:'2rem'}}>I'll be using Neuroconnect as a </h3>
                 </div>
-{/* 
-                <div style={{display:'flex', marginLeft:'6rem', marginBottom:'2rem'}}>
-                    <Button disabled={loading} type="submit">
+
+                <div style={{display:'flex', marginLeft:'2rem', marginBottom:'2rem'}}>
+                    {/* <Button className = {style1} disabled={loading} onClick={changeStyle1} data-toggle="buttons" type="radio" name="options" id="option1" autocomplete="off">
                             Mentor
                     </Button>
 
-                    <Button disabled={loading} type="submit">
+                    <Button className = {style2} disabled={loading} onClick={changeStyle2} data-toggle="buttons" type="radio" name="options" id="option1" autocomplete="off" checked>
                             Mentee
                     </Button>
-                </div> */}
+
+                    <Button className = {style3} disabled={loading} onClick={changeStyle3}  data-toggle="buttons" type="radio" name="options" id="option1" autocomplete="off" checked>
+                            Volunteer
+                    </Button> */}
+                    {/* <Form.Group id="position" role="form">
+                    <Form.Label>
+                        Tester
+                    </Form.Label>
+                    <div>
+                    <Form.Control type = 'radio' value="mentor" ref={nameRef} required id="inputPosition" aria-describedby="inputPosition"/>
+                    </div>
+                </Form.Group> */}
+
+                <ButtonGroup>
+                    {positions.map((radio, idx) => (
+                    <ToggleButton 
+                        style={{marginLeft:'2rem', marginRight:'2rem',textAlign: 'center', fontSize:'1.5rem',boxSizing: 'border-box', borderRadius:'2.3rem',border:'3px solid black'}}
+                        key={idx}
+                        id={`radio-${idx}`}
+                        type="radio"
+                        variant= "outline-dark"
+                     
+                        // bsPrefix="buttonCircle"
+                        name="radio"
+                        value={radio.value}
+                        checked={radioPosValue === radio.value}
+                        onChange={(e) => handlePosChange(radio.name,radio.value)}
+                    >
+                    {radio.name}
+                    </ToggleButton>
+                    ))}
+                </ButtonGroup>
+                </div>
 
                 {/* <Grid container style={{marginBottom:'2rem'}} alignItems='center'>
                     <Grid item xs = {2} pr={'6rem'}>
-                        <Button className = 'buttonCircle'  disabled={loading} type="submit" id ="mentor">
+                    <Button className = {style1} type = "button" disabled={loading} onClick={changeStyle1}>
                             Mentor
-                        </Button>
+                    </Button>
                     </Grid>
 
                     <Grid item xs = {2} pl={'6rem'}>
-                        <Button className = 'buttonCircle'  disabled={loading} type="submit" id = "mentee">
+                    <Button className = {style2} type = "button" disabled={loading} onClick={changeStyle2}>
                             Mentee
-                        </Button>
+                    </Button>
                     </Grid>
 
                     <Grid item xs = {2} pl={'12rem'}>
-                        <Button className = 'buttonCircle'  disabled={loading} type="submit" id = "mentee">
+                    <Button className = {style3} type = "button"disabled={loading} onClick={changeStyle3}>
                             Volunteer
-                        </Button>
+                    </Button>
                     </Grid>
-
                 </Grid> */}
             </Grid>
 
@@ -120,19 +181,60 @@ export default function Signup() {
                 </Button>
                 </div> */}
 
-                {/* <Grid container style={{marginBottom:'2rem', marginLeft:'6rem'}} alignItems='center'>
-                    <Grid item xs = {3} pr={'5rem'}>
-                        <Button className = 'buttonCircle' disabled={loading} type="submit">
+                <Grid container style={{marginBottom:'2rem', marginLeft:'6rem'}} alignItems='center'>
+                    {/* <Grid item xs = {3} pr={'5rem'}>
+                        <ToggleButton 
+                         variant= "outline-dark"
+                        disabled={loading}
+                        type="radio"
+                        onChange={(e) => setNeurodivergentRef(true)}>
                             Yes
-                        </Button>
+                        </ToggleButton>
                     </Grid>
 
                     <Grid item xs = {3} pl={'5rem'}>
-                        <Button className = 'buttonCircle'  disabled={loading} type="submit">
+                        <Button 
+                        variant= "outline-dark" 
+                        disabled={loading} 
+                        type="radio">
                             No
                         </Button>
                     </Grid>
                 </Grid> */}
+                <ButtonGroup>
+                {neuro.map((NeuroStatus, idx) => (
+                    <ToggleButton 
+                        style={{marginLeft:'7rem', marginRight:'2rem',textAlign: 'center', fontSize:'1.5rem',boxSizing: 'border-box', borderRadius:'2.3rem',border:'3px solid black'}}
+                        key={idx}
+                        type="radio"
+                        variant= "outline-dark"
+                     
+                        // bsPrefix="buttonCircle"
+                        name="radio"
+                        value={NeuroStatus.status}
+                        checked={checkedNeuro === NeuroStatus.value}
+                        onChange={(e) =>  handleNeuroChange(NeuroStatus.value)}
+                    >
+                    {NeuroStatus.status}
+                    </ToggleButton>
+                    ))}
+                </ButtonGroup>
+                {neurodivergentRef && 
+                       <div>
+                           {/* <h3>If you are comfortable sharing, please share what you identify with (ie: autism, ADHD)</h3> */}
+                           <Form.Group id="neuroSpecific" role="form">
+                            <Form.Label>
+                            If you are comfortable, please share what neurodivergences or other disabilities you identify with:
+                            </Form.Label>
+                            <div>
+                            <Form.Control className = 'textBox' ref={neurodivergentSpecific} required id="inputNeurodivergent" aria-describedby="inputNeurodivergent"/>
+                            </div>
+                        </Form.Group>
+                       </div>
+                }
+
+                {/* {neurodivergentRef && <div>{neuroFalse()}</div>} */}
+                </Grid>
             </Grid>
 
             <Grid item xs={12}>
@@ -167,8 +269,6 @@ export default function Signup() {
             </Grid>
 
             <Grid item xs={6}>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <Form onSubmit={handleSubmit}>
                 <Form.Group id="name" role="form">
                     <Form.Label>
                         First and Last Name
@@ -216,16 +316,14 @@ export default function Signup() {
                 
                     </div>
                 </Form.Group>
-                <div style={{marginLeft:'53rem'}}>
-            <Button className="buttonCircle" disabled={loading} type="submit" >
-                Sign Up
-            </Button>
-        </div>
-            </Form>
+                <div style={{marginLeft:'13rem'}}>
+                    <Button className="buttonCircle" disabled={loading} type="submit" >
+                        Sign Up
+                    </Button>
+                </div>
             </Grid>
-        {/* </Form> */}
         </Grid>
-    {/* </Form> */}
+    </Form>
         
         <div style={{textAlign:'center'}}>
             <p>Already have an account? <Link to="/login" style={{textDecoration:'none'}}>Login Here!</Link></p>

@@ -19,6 +19,23 @@
     background-color: #2CC9B6;
   }
 
+  .buttonCircleChange{
+    /* left: 0rem !important;
+    right: 0rem !important;
+    top: 0rem !important;
+    bottom: 0rem !important; */
+    height:2.9rem !important;
+    width:12rem !important;
+
+    border: 2px solid #242828 !important;
+    box-sizing: border-box !important;
+    border-radius: 2.3rem !important;
+    margin-top: 2rem;
+    margin-left:2rem;
+    background-color: #2CC9B6 !important;
+    color:white !important;
+  }
+
   .buttonCircle{
     /* left: 0rem !important;
     right: 0rem !important;

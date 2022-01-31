@@ -23,10 +23,10 @@ export function AuthProvider({children}) {
                 uid: cred.user.uid,
                 name: data.Name,
                   email: cred.user.email,
-                  mentor: data.Mentor,
-                  neuro: data.Neuro,
+                  position: data.Position,
+                  neurodivergent: data.Neuro,
+                  neuroSpecific: data.NeuroSpecific ,
                   pronouns: data.Pronouns
-                  
                 });
                 console.log("Document written with ID: ", docRef.id);
               } catch (e) {
