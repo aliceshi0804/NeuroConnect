@@ -9,7 +9,6 @@ export default function Dashboard(){
 
     const handleChange = (event, newValue) => {
       setValue(newValue);
-      //, backgroundColor:'#2CC9B633'
     };
 
     return(

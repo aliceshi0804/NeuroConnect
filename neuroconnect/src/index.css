@@ -155,10 +155,14 @@
   }
 
   .careerScroll{
-    width: 61rem;
+    width: 70rem;
     height: 16rem;
     left: 18rem;
     top: 24rem;
     border: 0.2rem solid ;
     border-radius: 1rem;
+    margin-left:7rem;
+    margin-top:1rem;
+    display: grid;
+    grid-template-columns: 30rem 30rem;
   }

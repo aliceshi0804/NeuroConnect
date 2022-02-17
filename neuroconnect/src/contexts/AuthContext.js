@@ -22,11 +22,12 @@ export function AuthProvider({children}) {
                 const docRef = addDoc(collection(db, "users"), {
                 uid: cred.user.uid,
                 name: data.Name,
-                  email: cred.user.email,
-                  position: data.Position,
-                  neurodivergent: data.Neuro,
-                  neuroSpecific: data.NeuroSpecific ,
-                  pronouns: data.Pronouns
+                email: cred.user.email,
+                position: data.Position,
+                neurodivergent: data.Neuro,
+                neuroSpecific: data.NeuroSpecific,
+                pronouns: data.Pronouns,
+                interests: data.Interest
                 });
                 console.log("Document written with ID: ", docRef.id);
               } catch (e) {

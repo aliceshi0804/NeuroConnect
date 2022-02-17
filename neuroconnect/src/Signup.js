@@ -16,20 +16,25 @@ export default function Signup() {
     const emailRef = useRef();
     const passwordRef =useRef();
     const passwordConfirmRef = useRef();
+
     const nameRef = useRef();
     const pronounRef = useRef();
     // const mentorRef = useRef();
-    const neurodivergentSpecific = useRef();
-    const [neurodivergentRef, setNeurodivergentRef]=React.useState();
+    const neurodivergentSpecific = useRef('none');
+    const [neurodivergentRef, setNeurodivergentRef]=React.useState(false);
+
     const {signup} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] =useState(false)
     const history = useHistory()
+
     const [stylePos, setStylePos] = useState("buttonCircle");
     const [checked, setChecked] = useState(false);
     const [checkedNeuro, setCheckedNeuro] = React.useState();
-    const [radioPosValue, setRadioPosValue] = React.useState();
+    const [radioPosValue, setRadioPosValue] = React.useState(false);
     const [positionValue, setPosValue] = useState('');
+    const [careerInterest,setCareerInterest] = React.useState([]);
+    
     const handlePosChange = (selectedPosition,selectedValue) => {
       setPosValue(selectedPosition)
       setRadioPosValue(selectedValue)
@@ -38,16 +43,28 @@ export default function Signup() {
     }
 
     const handleNeuroChange = (selectedStatus) => {
-        console.log("selected ",selectedStatus)
+        // console.log("selected ",selectedStatus)
         setCheckedNeuro(selectedStatus)
         setNeurodivergentRef(selectedStatus)
-      }
+    }
 
-    // const neuroFalse=()=>{
-    //     neurodivergentSpecific="N/A"
-    // }
-      console.log("check status", neurodivergentRef)
-    // console.log("Position stored:", positionValue)
+    const handleCareerInterest = (careerObj) =>{
+        // console.log("an option was selected")
+        // console.log('option name: ', careerObj.name)
+        // console.log("option status before: ", careerObj.selected)
+        careerObj.selected = !careerObj.selected
+        // console.log("option status after: ", careerObj.selected)
+
+        // select option
+        {careerObj.selected && setCareerInterest(careerInterest.concat(careerObj.name))}
+        // setCareerInterest(careerInterest.concat(careerObj.name))
+
+        //deselect option 
+        {careerObj.selected == false &&  setCareerInterest(careerInterest.filter(option => option != careerObj.name))}
+    }
+
+    // console.log("careerInterest Array",careerInterest)
+  
     const positions = [
         { name: 'Mentor', value: '1' },
         { name: 'Mentee', value: '2' },
@@ -60,15 +77,16 @@ export default function Signup() {
       ];
 
     async function handleSubmit(e){
+        
         e.preventDefault()
         let data = {
             Name: nameRef.current.value,
             Neuro: neurodivergentRef,
-            NeuroSpecific: neurodivergentSpecific.current.value,
+            NeuroSpecific: neurodivergentSpecific.current,
             Pronouns:pronounRef.current.value,
-            Position: positionValue
+            Position: positionValue,
+            Interest: careerInterest
         }
-
         if(passwordRef.current.value !== passwordConfirmRef.current.value){
             return setError('Passwords do not match')
         }
@@ -76,7 +94,8 @@ export default function Signup() {
         try {
             setError("")
             setLoading(true)
-            console.log("Processing")
+            // console.log("Processing")
+            // console.log("Person", data)
             await signup(emailRef.current.value, passwordRef.current.value,data)
             history.push("/learn");
         }
@@ -102,26 +121,6 @@ export default function Signup() {
                 </div>
 
                 <div style={{display:'flex', marginLeft:'2rem', marginBottom:'2rem'}}>
-                    {/* <Button className = {style1} disabled={loading} onClick={changeStyle1} data-toggle="buttons" type="radio" name="options" id="option1" autocomplete="off">
-                            Mentor
-                    </Button>
-
-                    <Button className = {style2} disabled={loading} onClick={changeStyle2} data-toggle="buttons" type="radio" name="options" id="option1" autocomplete="off" checked>
-                            Mentee
-                    </Button>
-
-                    <Button className = {style3} disabled={loading} onClick={changeStyle3}  data-toggle="buttons" type="radio" name="options" id="option1" autocomplete="off" checked>
-                            Volunteer
-                    </Button> */}
-                    {/* <Form.Group id="position" role="form">
-                    <Form.Label>
-                        Tester
-                    </Form.Label>
-                    <div>
-                    <Form.Control type = 'radio' value="mentor" ref={nameRef} required id="inputPosition" aria-describedby="inputPosition"/>
-                    </div>
-                </Form.Group> */}
-
                 <ButtonGroup>
                     {positions.map((radio, idx) => (
                     <ToggleButton 
@@ -142,26 +141,6 @@ export default function Signup() {
                     ))}
                 </ButtonGroup>
                 </div>
-
-                {/* <Grid container style={{marginBottom:'2rem'}} alignItems='center'>
-                    <Grid item xs = {2} pr={'6rem'}>
-                    <Button className = {style1} type = "button" disabled={loading} onClick={changeStyle1}>
-                            Mentor
-                    </Button>
-                    </Grid>
-
-                    <Grid item xs = {2} pl={'6rem'}>
-                    <Button className = {style2} type = "button" disabled={loading} onClick={changeStyle2}>
-                            Mentee
-                    </Button>
-                    </Grid>
-
-                    <Grid item xs = {2} pl={'12rem'}>
-                    <Button className = {style3} type = "button"disabled={loading} onClick={changeStyle3}>
-                            Volunteer
-                    </Button>
-                    </Grid>
-                </Grid> */}
             </Grid>
 
             <Grid item xs={6} pl={'2rem'}>
@@ -170,37 +149,8 @@ export default function Signup() {
                     <h3 style={{marginLeft:'2rem'}}>Do you identify as neurodivergent?</h3>
                 </div>
 
-                {/* Textbox for neurodivergent fill in if clicked yes  */}
-
-                {/* <div style={{display:'flex', marginLeft:'6rem', marginBottom:'2rem'}}>
-                <Button className = 'buttonCircle' disabled={loading} type="submit">
-                        Yes
-                </Button>
-                <Button className = 'buttonCircle' disabled={loading} type="submit">
-                        No
-                </Button>
-                </div> */}
-
+           
                 <Grid container style={{marginBottom:'2rem', marginLeft:'6rem'}} alignItems='center'>
-                    {/* <Grid item xs = {3} pr={'5rem'}>
-                        <ToggleButton 
-                         variant= "outline-dark"
-                        disabled={loading}
-                        type="radio"
-                        onChange={(e) => setNeurodivergentRef(true)}>
-                            Yes
-                        </ToggleButton>
-                    </Grid>
-
-                    <Grid item xs = {3} pl={'5rem'}>
-                        <Button 
-                        variant= "outline-dark" 
-                        disabled={loading} 
-                        type="radio">
-                            No
-                        </Button>
-                    </Grid>
-                </Grid> */}
                 <ButtonGroup>
                 {neuro.map((NeuroStatus, idx) => (
                     <ToggleButton 
@@ -231,9 +181,8 @@ export default function Signup() {
                             </div>
                         </Form.Group>
                        </div>
-                }
+            }
 
-                {/* {neurodivergentRef && <div>{neuroFalse()}</div>} */}
                 </Grid>
             </Grid>
 
@@ -249,13 +198,28 @@ export default function Signup() {
                         Search Fields By Keyword
                     </Form.Label>
                     <Form.Control className = 'textBox' required id="inputCareer" aria-describedby="inputCareer"/>
-            </Form.Group>
+            </Form.Group> */}
 
             <Grid item xs = {12} style={{textAlign:'center', marginBottom:'2rem'}}>
-                <select multiple className = "careerScroll">
-                    {CareerInterestData && CareerInterestData.map((item) => (<option value={item.number}>{item.name}</option>))}
-                </select>
-            </Grid> */}
+                <div className = "careerScroll" style = {{overflowY:"scroll"}} aria-describedby="Career Interests">
+                    {CareerInterestData && 
+                    CareerInterestData.map(
+                        (item,idx) => (
+                            <div>
+                                <Form.Group key = {idx}>
+                                <Form.Check style = {{marginTop:'1rem', marginLeft:'7rem', fontSize:'1.5rem'}} type = "checkbox" 
+                                    label = {item.name} onChange={()=>{handleCareerInterest(item)}} id={item.name} aria-describedby={item.name}>
+                                    {/* <Form.Check style = {{marginTop:'1rem', marginLeft:'7rem', fontSize:'1.5rem'}} 
+                                     onChange={()=>{handleCareerInterest(item)}} required id={item.name} aria-describedby={item.name}>
+                                        
+                                        <Form.Check.Input type = "checkbox" value={item.number}/>
+                                        <Form.Check.Label>{item.name}</Form.Check.Label> */}
+                                    </Form.Check>
+                                </Form.Group>
+                            </div>
+                        ))}
+                </div>
+            </Grid>
 
             <Grid item xs={12}>
                 <div style={{display:'flex'}}>
