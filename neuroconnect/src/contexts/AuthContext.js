@@ -40,7 +40,7 @@ export function AuthProvider({children}) {
         return auth.signInWithEmailAndPassword(email,password)
     }
     function logout(){
-        signOut(isAuth).then(() => {history.push('/login')}).catch((error) => {
+        signOut(isAuth).then(() => {history.push('/')}).catch((error) => {
             console.log(error)
         })
     }
