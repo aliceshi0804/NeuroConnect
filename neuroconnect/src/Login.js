@@ -26,7 +26,7 @@ export default function Login() {
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
             // console.log('loading state after setLoading(true)', loading)
-            history.push("/learn");
+            history.push("/onboarding");
             // console.log("logged in after auth",loggedIn)
         }
         catch (error){

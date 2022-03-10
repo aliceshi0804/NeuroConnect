@@ -9,10 +9,7 @@ import Button from './components/Button'
 import {useAuth} from './contexts/AuthContext'
 
 export default function(){
-    const emailRef = useRef();
-    function handleSubmit(){
-        <Redirect to = '/forgotPasswordVerify'></Redirect>
-    }
+    const codeRef = useRef();
     return (
     <div>
         <LogoHeader/>
@@ -24,19 +21,20 @@ export default function(){
 
             <Grid item xs = {6}>
                 <h1>Forgot Password</h1>
+
                 <Form.Group id="email">
                         <Form.Label>
-                            email
+                            Verify it's you
                         </Form.Label>
                         <div>
-                        <Form.Control className = 'textBox' type = "email" ref={emailRef} required id="inputEmail" aria-describedby="inputEmail"/>
+                        <Form.Control className = 'textBox' ref={codeRef} required id="inputEmail" aria-describedby="inputEmail"/>
                     </div>
                     </Form.Group>
 
-                <p style = {{marginTop:'1rem'}}>We’ll send you an email with a code (the one you used to set up your account) to reset it. </p>
-               <Link to = '/forgotPasswordVerify' style= {{textDecoration:'none'}}>
-               <Button color = 'white' name = 'Send Email'/>
-               </Link>
+                <p style = {{marginTop:'1rem'}}>If the code isn’t working, try re-sending a new email. If you don’t see the email, check your spam and other inboxes. </p>
+                <Link to = '/forgotPasswordReset' style={{ textDecoration: 'none' }}>
+                <Button color = 'white' name = 'Verify'/>
+                </Link>
             </Grid>
         </Grid>
     </div>

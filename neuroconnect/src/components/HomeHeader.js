@@ -11,7 +11,7 @@ export default function Home() {
             <img src = {Logo}/>
         </Link>
         <div class = "buttonHeader">
-            <Link to = '/Login'  style={{ textDecoration: 'none' }}>
+            <Link to = '/Login'  style={{ textDecoration: 'none', marginRight:'4rem' }}>
                 <Button name = "Log In" color = "white"/>
             </Link>
             <Link to = '/Signup'  style={{ textDecoration: 'none' }}>

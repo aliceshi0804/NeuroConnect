@@ -11,19 +11,19 @@ import '../index.css'
 export default function ModuleCard(props){
     return(
         <div>
-            <Card sx={{ display: 'flex' , mr: 10}} className = "moduleCardFormat" style= {{background: `${props.color}`}} >
-                <CardContent sx={{ mr: 10}}>
-                <div className = 'homeHeader' >
-                    <div>
+            <Card sx={{ display: 'flex'}} className = "moduleCardFormat" style= {{background: `${props.color}`}} >
+                <CardContent>
+                <div style = {{display: 'flex'}}>
+                    <div style = {{width:'50%'}}>
                         <h2>Course {props.number}</h2>
                         <h2>{props.title}</h2>
                         <p>{props.description}</p>
                     </div>
 
-                    <Box sx={{ display: 'flex', alignItems: 'center', pl: 30}}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', marginLeft:'2rem'}}>
+                        
                         <AccessTimeOutlinedIcon fontSize = 'large'/>
                         <p className = 'moduleCardP'>{props.time} min </p>
-              
 
                         <MouseOutlinedIcon fontSize = 'large'/>
                         <p className = 'moduleCardP'>{props.topics} topics </p>
@@ -33,7 +33,6 @@ export default function ModuleCard(props){
 
                         <ArrowCircleRightOutlinedIcon fontSize = 'large'/>
                     </Box>
-                    
                 </div>
                 </CardContent>
             </Card>

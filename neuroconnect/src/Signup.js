@@ -97,7 +97,7 @@ export default function Signup() {
             // console.log("Processing")
             // console.log("Person", data)
             await signup(emailRef.current.value, passwordRef.current.value,data)
-            history.push("/learn");
+            history.push("/onboarding");
         }
         catch (error){
             console.log(error)

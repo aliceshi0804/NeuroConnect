@@ -15,8 +15,11 @@
     box-sizing: border-box;
     border-radius: 2.3rem;
     margin-top: 2rem;
-    margin-left:2rem;
+    /* margin-left:2rem; */
     background-color: #2CC9B6;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
   }
 
   .buttonCircleChange{
@@ -26,14 +29,18 @@
     bottom: 0rem !important; */
     height:2.9rem !important;
     width:12rem !important;
-
+    display:flex;
     border: 2px solid #242828 !important;
     box-sizing: border-box !important;
     border-radius: 2.3rem !important;
     margin-top: 2rem;
-    margin-left:2rem;
+    /* margin-left:2rem; */
     background-color: #2CC9B6 !important;
     color:white !important;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    
   }
 
   .buttonCircle{
@@ -41,6 +48,7 @@
     right: 0rem !important;
     top: 0rem !important;
     bottom: 0rem !important; */
+    display:flex;
     height:2.9rem !important;
     width:12rem !important;
 
@@ -48,25 +56,25 @@
     box-sizing: border-box !important;
     border-radius: 2.3rem !important;
     margin-top: 2rem;
-    margin-left:2rem;
+    /* margin-left:2rem; */
     background-color: white !important;
     color:black !important;
-    align-items: center;
-    align-content: center;
+    justify-content: center;
   }
   
   .buttonText{
     position: relative;
-    left: 0.3rem;
-    right: 0.3rem;
-    top: 0.30rem;
-    bottom: 0.3rem;
+    /* left: 0.3rem;
+    right: 0.3rem; */
+    top: 0.5rem;
+    bottom: 0.4rem;
     text-align: center;
     font-size: 1.1rem;
     line-height: 1.3rem;
     color:black;
     align-items: center;
     align-content: center;
+    justify-content: center;
   }
 
   .homeHeader{
@@ -115,7 +123,7 @@
     top: 24rem !important; */
 
     background: #FFFFFF !important;
-    border: 0.2rem solid #000000 !important;
+    border: 0.0625rem solid #000000 !important;
     box-sizing: border-box !important;
     border-radius: 6.25rem !important;
     padding-left: 1rem !important;
@@ -126,7 +134,7 @@
 
   .moduleCardFormat{
     width: 72rem;
-    height: 11.3rem;
+    /* height: 11.3rem; */
     left: 8.9rem;
     top: 23.3rem;
     border-radius: 1.3rem;
@@ -136,6 +144,8 @@
   .moduleCardP{
     padding-right: 1rem;
     font-weight: 500;
+  
+    transform: translate(5%,30%);
   }
 
   .purpleCircle{
@@ -183,8 +193,11 @@
   border: 0.2rem solid gray;
   border-radius: 3rem;
   text-align: center;
+  /* margin: '2rem'; */
+  /* padding: '2rem'; */
   /* align-content: center;
   align-items: center;  */
+  /* margin-right:1rem; */
   }
 
   .circleAvatar{
@@ -201,17 +214,19 @@
   }
 
   .textBoxWarning{
-    width: 28rem;
+    width: fit-content;
     height: 2.75rem;
     background: #FFFFFF;
     border: 0.2rem solid red;
     box-sizing: border-box;
     border-radius: 3rem;
     padding-left: 0.5rem;
+    padding-right: 0.5rem;
     align-items: center;
     align-content: center;
     font-size: 1.3rem;
     color:red;
+    margin-bottom: 2rem;
   }
 
   .buttonCircleConnect{
@@ -225,4 +240,71 @@
     font-size: 1.3rem;
     margin-left: 1.3rem;
     text-align: center;
+  }
+
+  .contentPaperSize{
+    width: 90rem;
+    height: fit-content;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+    margin-left: 3rem;
+  }
+
+  .tabPaperSize{
+    width: fit-content;
+    height: 30rem;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  }
+
+  .moduleSlides{
+    position: relative; 
+    width: 100%; 
+    height: 0; 
+    padding-top: 56.2500%;
+    padding-bottom: 48px; 
+    box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); 
+    margin-top: 1.6em; 
+    margin-bottom: 0.9em; 
+    overflow: hidden;
+    border-radius: 8px; 
+    will-change: transform;
+  }
+
+  .moduleSlidesContent{
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    top: 0; 
+    left: 0; 
+    border: none; 
+    padding: 0;
+    margin: 0;
+  }
+
+  .personalProfileCalendar{
+    height:fit-content;
+    width: fit-content;
+    margin-left: 1.5rem;
+  }
+
+  .arrowOnboarding{
+    position: absolute;
+    width: 65.88px;
+    height: 36px;
+
+    background: #FFFFFF;
+  }
+
+  .bioTextBox{
+    width: 773px;
+height: 108px;
+left: calc(50% - 773px/2 + 215.5px);
+top: 809px;
+
+background: #FFFFFF;
+border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 10px;
   }
