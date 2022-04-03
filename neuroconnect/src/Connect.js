@@ -2,7 +2,16 @@ import React from 'react'
 import Dashboard from "./components/Dashboard"
 import ConnectTile from "./components/ConnectTile"
 import {Link} from 'react-router-dom';
+import {useAuth} from './contexts/AuthContext'
 export default function(){
+    // const {getMultipleUsers} = useAuth();
+
+    //     try {
+    //         getMultipleUsers()
+    //     }
+    //     catch (error){
+    //         console.log(error)
+    //     }
     return (
         <div style={{marginBottom:'2rem'}}>
             <Dashboard/>
@@ -16,7 +25,9 @@ export default function(){
             <h3 style={{marginTop:'2rem'}}>Your Requests</h3>
             <div style={{ overflowX:"scroll", display:'flex', marginRight:'2rem'}}>
                     <div style = {{marginRight:'2rem'}}>
-                    <ConnectTile type = "request"/>
+                        <Link to = '/ConnectProfile'  style={{ textDecoration: 'none'}}>
+                        <ConnectTile type = "request"/>
+                        </Link>
                     </div>
 
                     <div style = {{marginRight:'2rem'}}>
@@ -35,7 +46,6 @@ export default function(){
                     <ConnectTile type = "request"/>
                     </div>
             </div>
-            {/* style ={{backgroundColor:'#29B4A326'}} */}
          
             <h2 style={{marginTop:'2rem'}}>Recommended for You</h2>
             <div style={{overflowX:"scroll", display:'flex', marginRight:'2rem'}}>
@@ -59,7 +69,6 @@ export default function(){
                 </div>
             </div>
             
-            {/* <h2 style={{marginTop:'2rem'}}>Search By</h2> */}
         </div>
     )
 }

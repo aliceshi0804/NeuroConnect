@@ -71,7 +71,7 @@ export default function Home() {
         </Grid>
         <h1 style={{ textAlign: 'center'}}> Sign up to be a mentee, mentor, or volunteer today! </h1>
         <div class = "buttonHeader" style = {{marginBottom: '3rem'}}>
-                <Link to = '/login'  style={{ textDecoration: 'none' }}>
+                <Link to = '/login'  style={{ textDecoration: 'none', marginRight:'4rem' }}>
                     <Button name = "Log In" color = "white"/>
                 </Link>
                 <Link to = '/signup'  style={{ textDecoration: 'none' }}>

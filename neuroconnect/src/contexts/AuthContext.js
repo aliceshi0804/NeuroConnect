@@ -36,6 +36,37 @@ export function AuthProvider({children}) {
         })
     }
 
+    function getUser(email){
+        auth.getUserByEmail(email).then((userRecord) => {
+            try{
+                 // See the UserRecord reference doc for the contents of userRecord.
+            console.log(`Successfully fetched user data: ${userRecord.toJSON()}`);
+            }
+            catch(e){
+                console.log('Error fetching user data:', e);
+            }
+        });
+    }
+
+    function getMultipleUsers(){
+        const listAllUsers = (nextPageToken) => {
+  // List batch of users, 1000 at a time.
+  auth.listUsers(1000, nextPageToken).then((listUsersResult) => {
+      listUsersResult.users.forEach((userRecord) => {
+        console.log('user', userRecord.toJSON());
+      });
+      if (listUsersResult.pageToken) {
+        // List next batch of users.
+        listAllUsers(listUsersResult.pageToken);
+      }
+    })
+    .catch((error) => {
+      console.log('Error listing users:', error);
+    });
+    return listAllUsers();
+};
+    }
+
     function login(email,password){
         return auth.signInWithEmailAndPassword(email,password)
     }
@@ -43,7 +74,7 @@ export function AuthProvider({children}) {
         signOut(isAuth).then(() => {history.push('/')}).catch((error) => {
             console.log(error)
         })
-    }
+    }   
 
     useEffect(()=>{
         const unsub =auth.onAuthStateChanged(user => {

@@ -14,6 +14,7 @@ import Onboarding from './Onboarding'
 import ForgotPassword from './ForgotPassword';
 import ForgotPass2Verify from './ForgotPass2Verify';
 import ForgotPass3Reset from './ForgotPass3Reset';
+import ConnectProfile from './ConnectProfile'
 import { AuthProvider } from './contexts/AuthContext';
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
@@ -37,8 +38,7 @@ function App() {
                   <Route exact path = "/forgotPasswordVerify" component = {ForgotPass2Verify}/>
                   <Route exact path = "/forgotPasswordReset" component = {ForgotPass3Reset}/>
                   <Route path="/module/:title/:numCourse" component={ModulePage}/>
-                  
-                  {/* <Route path="/module" component={ModulePage}/> */}
+                  <Route path="/ConnectProfile" component={ConnectProfile}/>
                   <Route path="/onboarding" component={Onboarding}/>
                 </Switch>
               </AuthProvider>
