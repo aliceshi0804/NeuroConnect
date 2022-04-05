@@ -5,6 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import sample from '../images/sampleCircle.jpg'
+import Typography from '@mui/material/Typography';
 import '../index.css'
 const style = {
     width: '100%',
@@ -21,40 +22,93 @@ export default function(){
          
     <List component="nav" aria-label="information about person" sx = {{fontSize:'2rem',margin:'2rem', alignItems: 'center',justifyContent:'center', alignContent:'center'}}>
       <ListItem>
-        <ListItemText classes = 'listItemLabel' primary="Role" />
+        <ListItemText primary={
+          <React.Fragment>
+          <Typography
+            sx={{ fontSize: '3rem' }}
+            color="text.primary"
+          >
+            Role
+          </Typography>
+          </React.Fragment>
+        }/>
         <p style={{marginLeft:'2rem'}}>sample text</p>
       </ListItem>
       <Divider light/>
     
     <ListItem>
-    <ListItemText primary="Pronouns" />
+    <ListItemText primary={
+          <React.Fragment>
+          <Typography
+            sx={{ fontSize: '3rem' }}
+            color="text.primary"
+          >
+            Pronouns
+          </Typography>
+          </React.Fragment>
+        }/>
         <p>sample text</p>
     </ListItem>
     <Divider light />
  
       <ListItem>
-        <ListItemText primary="I identify as " />
+      <ListItemText primary={
+          <React.Fragment>
+          <Typography
+            sx={{ fontSize: '3rem' }}
+            color="text.primary"
+          >
+            I identify as 
+          </Typography>
+          </React.Fragment>
+        }/>
         <p>sample text</p>
       </ListItem>
       <Divider light />
 
       <ListItem>
-        <ListItemText primary="Career" />
+      <ListItemText primary={
+          <React.Fragment>
+          <Typography
+            sx={{ fontSize: '3rem' }}
+            color="text.primary"
+          >
+            Career
+          </Typography>
+          </React.Fragment>
+        }/>
         <p>sample text</p>
       </ListItem>
       <Divider light />
 
       <ListItem>
-        <ListItemText primary="Contact" />
+      <ListItemText primary={
+          <React.Fragment>
+          <Typography
+            sx={{ fontSize: '3rem' }}
+            color="text.primary"
+          >
+            Contact
+          </Typography>
+          </React.Fragment>
+        }/>
         <p>sample text</p>
       </ListItem>
       <Divider light />
 
       <ListItem>
-        <ListItemText primary="Bio" />
+      <ListItemText primary={
+          <React.Fragment>
+          <Typography
+            sx={{ fontSize: '3rem' }}
+            color="text.primary"
+          >
+            Biography
+          </Typography>
+          </React.Fragment>
+        }/>
         <p>sample text</p>
       </ListItem>
-
     </List>
         </div>
        

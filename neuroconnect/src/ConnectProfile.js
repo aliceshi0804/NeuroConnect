@@ -60,7 +60,7 @@ const [value, setValue] = React.useState(0);
             </Tabs>
         </Paper>
         
-        <Paper class= 'contentPaperSize' variant="outlined">
+        <Paper class= 'contentPaperSize' variant="outlined" style = {{marginBottom: '2rem'}}>
         <TabPanel value={value} index={0}>
             <ConnectProfileTab/>
         </TabPanel>
