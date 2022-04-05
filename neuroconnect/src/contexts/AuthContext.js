@@ -36,18 +36,6 @@ export function AuthProvider({children}) {
         })
     }
 
-    function getUser(email){
-        auth.getUserByEmail(email).then((userRecord) => {
-            try{
-                 // See the UserRecord reference doc for the contents of userRecord.
-            console.log(`Successfully fetched user data: ${userRecord.toJSON()}`);
-            }
-            catch(e){
-                console.log('Error fetching user data:', e);
-            }
-        });
-    }
-
     function getMultipleUsers(){
         const listAllUsers = (nextPageToken) => {
   // List batch of users, 1000 at a time.
