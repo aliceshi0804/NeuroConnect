@@ -12,6 +12,7 @@ export default function Login() {
     const emailRef = useRef();
     const passwordRef =useRef();
     const {login} = useAuth();
+    const {currentUser} = useAuth();
 
 
     const [error, setError] = useState('')
@@ -27,6 +28,7 @@ export default function Login() {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
+            await console.log(currentUser.uid)
             // await getUsers(emailRef.current.value)
             // console.log('loading state after setLoading(true)', loading)
             history.push("/onboarding");

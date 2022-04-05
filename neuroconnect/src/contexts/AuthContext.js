@@ -36,6 +36,7 @@ export function AuthProvider({children}) {
         })
     }
 
+<<<<<<< HEAD
 //     function getUser(email){
 //         auth.getUserByEmail(email).then((userRecord) => {
 //             try{
@@ -66,6 +67,26 @@ export function AuthProvider({children}) {
 //     return listAllUsers();
 // };
 //     }
+=======
+    function getMultipleUsers(){
+        const listAllUsers = (nextPageToken) => {
+  // List batch of users, 1000 at a time.
+  auth.listUsers(1000, nextPageToken).then((listUsersResult) => {
+      listUsersResult.users.forEach((userRecord) => {
+        console.log('user', userRecord.toJSON());
+      });
+      if (listUsersResult.pageToken) {
+        // List next batch of users.
+        listAllUsers(listUsersResult.pageToken);
+      }
+    })
+    .catch((error) => {
+      console.log('Error listing users:', error);
+    });
+    return listAllUsers();
+};
+    }
+>>>>>>> 3dc324f6bb80f2fb33d5568623bb0b6003a49223
 
     function login(email,password){
         return auth.signInWithEmailAndPassword(email,password)
