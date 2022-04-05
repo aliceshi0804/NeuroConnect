@@ -23,15 +23,15 @@ export default function ModuleCard(props){
                     <Box sx={{ display: 'flex', alignItems: 'center', marginLeft:'2rem'}}>
                         
                         <AccessTimeOutlinedIcon fontSize = 'large'/>
-                        <p className = 'moduleCardP'>{props.time} min </p>
+                        <p className = 'moduleCardP'>{props.time} </p>
 
                         <MouseOutlinedIcon fontSize = 'large'/>
-                        <p className = 'moduleCardP'>{props.topics} topics </p>
+                        <p className = 'moduleCardP'>{props.topics} </p>
 
-                        <PercentOutlinedIcon fontSize = 'large'/>
-                        <p className = 'moduleCardP'>finished: {props.progress}</p>
+                        {/* <PercentOutlinedIcon fontSize = 'large'/>
+                        <p className = 'moduleCardP'>finished: {props.progress}</p> */}
 
-                        <ArrowCircleRightOutlinedIcon fontSize = 'large'/>
+                        <ArrowCircleRightOutlinedIcon fontSize = 'large' style ={{display:'right'}}/>
                     </Box>
                 </div>
                 </CardContent>

@@ -14,35 +14,15 @@ const style = {
 export default function(){
     return(
         <div>
-            <div style={{display: 'flex', background:'  #2CC9B680', margin:'2rem', padding:'2rem'}}>
+            <div style={{display: 'flex', background:'#2CC9B680', margin:'2rem', padding:'2rem', justifyContent:'center', alignContent:'center', alignItems: 'center'}}>
                 <img src = {sample} className = "circleAvatar"/>
-                <h2 style = {{justifyContent:'center', alignContent:'center'}}> First Last Name </h2>
+                <h2 style = {{marginLeft:'2rem'}}> First Last Name </h2>
             </div>
-            {/* <Grid container>
-            <Grid item xs = {4}>
-                <h1>Role</h1>
-                <h1>Pronouns</h1>
-                <h1>I identify as ... </h1>
-                <h1>Career </h1>
-                <h1>Contact</h1>
-                <h1>Bio</h1>
-            </Grid>
-
-            <Grid item xs = {4} style = {{justifcyContent:'right', alignItems:'right',textAlign:'right'}}>
-            <p>Info</p>
-            <p>Info</p>
-            <p>Info</p>
-            <p>Info</p>
-            <p>Info</p>
-            <p>Info</p>
-            <p>Info</p>
-            <p>Info</p>
-            </Grid>
-            </Grid> */}
-    <List sx={style} component="nav" aria-label="information about person" style = {{marginLeft:'2rem'}}>
+         
+    <List component="nav" aria-label="information about person" sx = {{fontSize:'2rem',margin:'2rem', alignItems: 'center',justifyContent:'center', alignContent:'center'}}>
       <ListItem>
-        <ListItemText primary="Role" />
-        <p>sample text</p>
+        <ListItemText classes = 'listItemLabel' primary="Role" />
+        <p style={{marginLeft:'2rem'}}>sample text</p>
       </ListItem>
       <Divider light/>
     
