@@ -20,18 +20,18 @@ export default function ModuleCard(props){
                         <p>{props.description}</p>
                     </div>
 
-                    <Box sx={{ display: 'flex', alignItems: 'center', marginLeft:'2rem'}}>
+                    <Box sx={{ width:'50%', display: 'flex', marginLeft:'2rem', alignItems: 'center',justifyContent:'center', alignContent:'center'}}>
                         
-                        <AccessTimeOutlinedIcon fontSize = 'large'/>
-                        <p className = 'moduleCardP'>{props.time} min </p>
+                        <AccessTimeOutlinedIcon sx = {{fontSize:'4rem'}}/>
+                        <p className = 'moduleCardP' style = {{fontSize:'1.5rem'}}>{props.time} </p>
 
-                        <MouseOutlinedIcon fontSize = 'large'/>
-                        <p className = 'moduleCardP'>{props.topics} topics </p>
+                        <MouseOutlinedIcon sx = {{fontSize:'4rem'}}/>
+                        <p className = 'moduleCardP' style = {{fontSize:'1.5rem'}}>{props.topics} </p>
 
-                        <PercentOutlinedIcon fontSize = 'large'/>
-                        <p className = 'moduleCardP'>finished: {props.progress}</p>
+                        {/* <PercentOutlinedIcon sx = {{fontSize:'4rem'}}/>
+                        <p className = 'moduleCardP'style = {{fontSize:'1.5rem'}} >finished: {props.progress}</p> */}
 
-                        <ArrowCircleRightOutlinedIcon fontSize = 'large'/>
+                        <ArrowCircleRightOutlinedIcon sx = {{fontSize:'5rem'}}/>
                     </Box>
                 </div>
                 </CardContent>

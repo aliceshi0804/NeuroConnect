@@ -47,7 +47,7 @@ export default function(){
                     </div>
             </div>
          
-            <h2 style={{marginTop:'2rem'}}>Recommended for You</h2>
+            <h2 style={{marginTop:'2rem', marginBottom: '2rem'}}>Recommended for You</h2>
             <div style={{overflowX:"scroll", display:'flex', marginRight:'2rem'}}>
                 <div style={{marginRight:'2rem'}}>
                     <ConnectTile/>
