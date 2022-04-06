@@ -10,7 +10,42 @@ import sample from './images/sampleCircle.jpg'
 import PersonalProfileAccountSetting from "./components/PersonalProfileAccountSetting";
 import PersonalProfilePassword from "./components/PersonalProfilePassword";
 import PersonalProfileCalendar from "./components/PersonalProfileCalendar";
-// import Avatar from "@material-ui/core/Avatar";
+import Avatar from '@mui/material/Avatar';
+
+function stringToColor(string) {
+  let hash = 0;
+  let i;
+
+  /* eslint-disable no-bitwise */
+  for (i = 0; i < string.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = '#';
+
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.slice(-2);
+  }
+  /* eslint-enable no-bitwise */
+
+  return color;
+}
+
+function stringAvatar(name) {
+  return {
+    sx: {
+      bgcolor: stringToColor(name),
+      width: '5rem', 
+      height: '5rem',
+      // marginLeft:'auto',
+      // marginRight:'auto',
+      // marginTop:'2rem'
+      margin:'auto'
+    },
+    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+  };
+}  
 
 export default function Profile(){
     function TabPanel(props) {
@@ -50,13 +85,14 @@ const [value, setValue] = React.useState(0);
         {/* <h1 style={{marginLeft:'2rem'}}>Profile</h1> */}
         <div style={{display:'flex'}}>
         <Paper class = 'tabPaperSize'  variant="outlined">
-            <div style={{display: 'flex',alignItems: 'center',justifyContent: 'center'}}>
+            <div style={{display: 'flex',alignItems: 'center',justifyContent: 'center', marginTop:'1rem'}}>
                 {/* <img src = {sample} className = "circleAvatar"/> */}
                 {/* <Avatar>S</Avatar> */}
             </div>
 
             <h2 style={{textAlign:'center'}}>Welcome, John Doe! </h2>
-            <p style={{textAlign:'center'}}> Change Profile Picture</p>
+            <Avatar {...stringAvatar('John Doe')}  />
+            {/* <p style={{textAlign:'center'}}> Change Profile Picture</p> */}
             <Tabs
                 orientation="vertical"
                 // variant="scrollable"

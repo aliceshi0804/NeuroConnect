@@ -193,10 +193,12 @@
   border: 0.2rem solid gray;
   border-radius: 3rem;
   text-align: center;
+
   /* margin: '2rem'; */
   /* padding: '2rem'; */
-  /* align-content: center;
-  align-items: center;  */
+  align-content: center;
+  align-items: center; 
+  justify-items: center;
   /* margin-right:1rem; */
   }
 
@@ -321,4 +323,12 @@ border-radius: 10px;
   .listItemLabel {
     font-size: 3rem;
     font-weight: 100;
+  }
+
+  .avatarPosition{
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width:3rem;
+    height:3rem;
   }

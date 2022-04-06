@@ -16,7 +16,6 @@ export default function(){
     return(
         <div>
             <div style={{display: 'flex', background:'#2CC9B680', margin:'2rem', padding:'2rem', justifyContent:'center', alignContent:'center', alignItems: 'center'}}>
-                <img src = {sample} className = "circleAvatar"/>
                 <h2 style = {{marginLeft:'2rem'}}> First Last Name </h2>
             </div>
          
